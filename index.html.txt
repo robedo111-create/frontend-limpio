@@ -1,0 +1,10 @@
+echo <!DOCTYPE html> > index.html
+echo <html> >> index.html
+echo <head> >> index.html
+echo     <meta charset="UTF-8"> >> index.html
+echo     <meta http-equiv="refresh" content="0; url=frontend_mejorado.html"> >> index.html
+echo </head> >> index.html
+echo <body> >> index.html
+echo     <p>Redirigiendo al <a href="frontend_mejorado.html">Gestor de Posts</a></p> >> index.html
+echo </body> >> index.html
+echo </html> >> index.html
