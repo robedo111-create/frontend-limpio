@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mi Gestor de Posts Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background: #f1f5f9;
@@ -22,97 +21,66 @@
             align-items: flex-start;
             min-height: 100vh;
         }
-
         .container {
             max-width: 1000px;
             width: 100%;
         }
-
         h1 {
             font-size: 2.8rem;
             font-weight: 800;
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 12px;
             margin-bottom: 8px;
         }
-
         .subtitle {
             color: #64748b;
             margin-bottom: 32px;
             font-size: 1.1rem;
         }
-
-        /* Tarjetas */
         .card {
             background: white;
             border-radius: 24px;
             padding: 32px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
             margin-bottom: 28px;
             border: 1px solid #e9edf2;
-            transition: 0.2s;
         }
-
-        .card:hover {
-            box-shadow: 0 14px 50px rgba(0, 0, 0, 0.08);
-        }
-
         .card h2 {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
-
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 14px;
             margin-bottom: 18px;
         }
-
         .form-row {
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
         }
-
-        .form-row input,
-        .form-row textarea {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        input,
-        textarea {
+        input, textarea {
             padding: 14px 18px;
             border: 2px solid #e2e8f0;
             border-radius: 14px;
             font-size: 0.95rem;
             font-family: 'Inter', sans-serif;
-            transition: 0.2s;
             background: #fafbfc;
+            transition: 0.2s;
         }
-
-        input:focus,
-        textarea:focus {
+        input:focus, textarea:focus {
             outline: none;
             border-color: #6366f1;
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
             background: white;
         }
-
         textarea {
             resize: vertical;
             min-height: 80px;
         }
-
         .btn {
             padding: 12px 28px;
             border: none;
@@ -121,146 +89,116 @@
             font-size: 0.95rem;
             cursor: pointer;
             transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
         }
-
         .btn-primary {
             background: #6366f1;
             color: white;
         }
-
         .btn-primary:hover {
             background: #4f46e5;
             transform: scale(1.02);
         }
-
         .btn-success {
             background: #22c55e;
             color: white;
         }
-
         .btn-success:hover {
             background: #16a34a;
             transform: scale(1.02);
         }
-
         .btn-danger {
             background: #ef4444;
             color: white;
             padding: 6px 14px;
             font-size: 0.8rem;
         }
-
         .btn-danger:hover {
             background: #dc2626;
         }
-
-        .btn-warning {
-            background: #f59e0b;
-            color: white;
-            padding: 6px 14px;
-            font-size: 0.8rem;
-        }
-
-        .btn-warning:hover {
-            background: #d97706;
-        }
-
-        .btn-sm {
-            padding: 6px 14px;
-            font-size: 0.8rem;
-        }
-
-        /* Lista de posts */
         .post-list {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
-
         .post-item {
             background: white;
             border-radius: 16px;
             padding: 20px 24px;
             border: 1px solid #e9edf2;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-            transition: 0.15s;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
         }
-
         .post-item:hover {
             border-color: #cbd5e1;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
         }
-
         .post-content {
             flex: 1;
         }
-
         .post-title {
             font-size: 1.1rem;
             font-weight: 600;
             color: #0f172a;
             margin-bottom: 4px;
         }
-
         .post-body {
             color: #475569;
             font-size: 0.95rem;
             line-height: 1.5;
             margin-bottom: 6px;
         }
-
         .post-meta {
             font-size: 0.8rem;
             color: #94a3b8;
             display: flex;
             gap: 16px;
         }
-
         .post-actions {
             display: flex;
             gap: 8px;
             margin-left: 16px;
             flex-shrink: 0;
         }
-
         .empty-state {
             text-align: center;
             padding: 50px 20px;
             color: #94a3b8;
         }
-
         .empty-state span {
             font-size: 3.5rem;
             display: block;
             margin-bottom: 12px;
         }
-
-        .edit-form {
-            display: none;
-            margin-top: 12px;
-            background: #f8fafc;
-            padding: 16px;
+        .auth-message {
+            margin-top: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .auth-message.error {
+            color: #ef4444;
+        }
+        .auth-message.success {
+            color: #22c55e;
+        }
+        .user-info {
+            font-size: 0.9rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logout-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
+            font-weight: 600;
+            cursor: pointer;
         }
-
-        .edit-form.active {
-            display: block;
+        .logout-btn:hover {
+            background: #dc2626;
         }
-
-        .edit-form input,
-        .edit-form textarea {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        /* Responsive */
         @media (max-width: 600px) {
             .post-item {
                 flex-direction: column;
@@ -278,12 +216,35 @@
 <body>
 
     <div class="container">
-        <!-- Encabezado -->
         <h1>📝 Gestor de Posts Pro</h1>
         <p class="subtitle">Crea, edita y elimina posts desde tu API en la nube</p>
 
+        <!-- Sección de Autenticación -->
+        <div class="card" id="authSection">
+            <h2>🔐 Iniciar Sesión / Registrarse</h2>
+            <div class="form-group">
+                <input type="text" id="authEmail" placeholder="Correo electrónico" />
+                <input type="password" id="authPassword" placeholder="Contraseña" />
+                <div class="form-row">
+                    <button class="btn btn-primary" onclick="login()">Iniciar Sesión</button>
+                    <button class="btn btn-success" onclick="register()">Registrarse</button>
+                </div>
+                <div id="authMessage" class="auth-message"></div>
+            </div>
+        </div>
+
+        <!-- Sección de usuario autenticado -->
+        <div id="authenticatedSection" style="display: none;">
+            <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="user-info">
+                    <span>👤 <span id="userEmailDisplay">usuario@correo.com</span></span>
+                </div>
+                <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </div>
+
         <!-- Formulario para crear post -->
-        <div class="card">
+        <div class="card" id="postForm" style="display: none;">
             <h2>✏️ Nuevo Post</h2>
             <div class="form-group">
                 <input type="text" id="titleInput" placeholder="Título del post" />
@@ -296,7 +257,7 @@
         </div>
 
         <!-- Lista de posts -->
-        <div class="card">
+        <div class="card" id="postList" style="display: none;">
             <h2>📋 Posts</h2>
             <div id="postsContainer">
                 <div class="empty-state">
@@ -308,32 +269,108 @@
     </div>
 
     <script>
-        // --- CONFIGURACIÓN ---
         const API_URL = 'https://mi-proyecto-apis.onrender.com';
+        let token = null;
+        let userEmail = '';
 
-        // --- FUNCIÓN PARA CARGAR POSTS ---
+        // --- AUTENTICACIÓN ---
+        async function register() {
+            const email = document.getElementById('authEmail').value.trim();
+            const password = document.getElementById('authPassword').value.trim();
+            if (!email || !password) {
+                mostrarMensaje('❌ Completa todos los campos.', 'error');
+                return;
+            }
+            try {
+                const response = await fetch(`${API_URL}/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password }),
+                });
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Error al registrarse');
+                }
+                const data = await response.json();
+                token = data.access_token;
+                userEmail = email;
+                mostrarMensaje('✅ Registro exitoso. ¡Bienvenido!', 'success');
+                mostrarSeccionesAutenticadas();
+            } catch (error) {
+                mostrarMensaje(`❌ ${error.message}`, 'error');
+            }
+        }
+
+        async function login() {
+            const email = document.getElementById('authEmail').value.trim();
+            const password = document.getElementById('authPassword').value.trim();
+            if (!email || !password) {
+                mostrarMensaje('❌ Completa todos los campos.', 'error');
+                return;
+            }
+            try {
+                const formData = new URLSearchParams();
+                formData.append('username', email);
+                formData.append('password', password);
+                const response = await fetch(`${API_URL}/token`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData,
+                });
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Error al iniciar sesión');
+                }
+                const data = await response.json();
+                token = data.access_token;
+                userEmail = email;
+                mostrarMensaje('✅ Inicio de sesión exitoso.', 'success');
+                mostrarSeccionesAutenticadas();
+            } catch (error) {
+                mostrarMensaje(`❌ ${error.message}`, 'error');
+            }
+        }
+
+        function logout() {
+            token = null;
+            userEmail = '';
+            document.getElementById('authSection').style.display = 'block';
+            document.getElementById('authenticatedSection').style.display = 'none';
+            document.getElementById('postForm').style.display = 'none';
+            document.getElementById('postList').style.display = 'none';
+            document.getElementById('authEmail').value = '';
+            document.getElementById('authPassword').value = '';
+            mostrarMensaje('🔓 Has cerrado sesión.', 'success');
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            const el = document.getElementById('authMessage');
+            el.textContent = mensaje;
+            el.className = 'auth-message ' + tipo;
+        }
+
+        function mostrarSeccionesAutenticadas() {
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('authenticatedSection').style.display = 'block';
+            document.getElementById('userEmailDisplay').textContent = userEmail;
+            document.getElementById('postForm').style.display = 'block';
+            document.getElementById('postList').style.display = 'block';
+            cargarPosts();
+        }
+
+        // --- POSTS ---
         async function cargarPosts() {
             const container = document.getElementById('postsContainer');
-
             try {
-                const response = await fetch(`${API_URL}/posts`);
-
-                if (!response.ok) {
-                    throw new Error(`Error ${response.status}: ${response.statusText}`);
-                }
-
+                const response = await fetch(`${API_URL}/posts`, {
+                    headers: { 'Authorization': `Bearer ${token}` },
+                });
+                if (!response.ok) throw new Error(`Error ${response.status}`);
                 const posts = await response.json();
-
                 if (posts.length === 0) {
-                    container.innerHTML = `
-                        <div class="empty-state">
-                            <span>📭</span>
-                            No hay posts aún. ¡Crea el primero!
-                        </div>
-                    `;
+                    container.innerHTML = `<div class="empty-state"><span>📭</span>No hay posts aún. ¡Crea el primero!</div>`;
                     return;
                 }
-
                 let html = '<div class="post-list">';
                 posts.forEach(post => {
                     html += `
@@ -345,149 +382,74 @@
                                     <span>👤 Usuario ${post.userId}</span>
                                     <span>🆔 Post #${post.id}</span>
                                 </div>
-                                <div class="edit-form" id="edit-${post.id}">
-                                    <input type="text" id="edit-title-${post.id}" value="${escapeHtml(post.title)}" />
-                                    <textarea id="edit-body-${post.id}">${escapeHtml(post.body)}</textarea>
-                                    <button class="btn btn-success btn-sm" onclick="guardarEdicion(${post.id})">💾 Guardar</button>
-                                    <button class="btn btn-danger btn-sm" onclick="cancelarEdicion(${post.id})">❌ Cancelar</button>
-                                </div>
                             </div>
                             <div class="post-actions">
-                                <button class="btn btn-warning btn-sm" onclick="mostrarEditar(${post.id})">✏️</button>
-                                <button class="btn btn-danger btn-sm" onclick="eliminarPost(${post.id})">🗑️</button>
+                                <button class="btn btn-danger" onclick="eliminarPost(${post.id})">🗑️ Eliminar</button>
                             </div>
                         </div>
                     `;
                 });
                 html += '</div>';
                 container.innerHTML = html;
-
             } catch (error) {
-                console.error('Error al cargar posts:', error);
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <span>❌</span>
-                        Error al cargar los posts.<br />
-                        <small>${error.message}</small>
-                    </div>
-                `;
+                container.innerHTML = `<div class="empty-state"><span>❌</span>Error al cargar posts.<br/><small>${error.message}</small></div>`;
             }
         }
 
-        // --- FUNCIÓN PARA CREAR UN POST ---
         async function crearPost() {
             const title = document.getElementById('titleInput').value.trim();
             const body = document.getElementById('bodyInput').value.trim();
             const userId = parseInt(document.getElementById('userIdInput').value) || 1;
-
             if (!title || !body) {
                 alert('❌ Por favor, completa el título y el contenido.');
                 return;
             }
-
             try {
                 const response = await fetch(`${API_URL}/posts`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
                     body: JSON.stringify({ title, body, userId }),
                 });
-
                 if (!response.ok) {
-                    throw new Error(`Error ${response.status}: ${response.statusText}`);
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Error al crear el post');
                 }
-
-                const nuevoPost = await response.json();
                 document.getElementById('titleInput').value = '';
                 document.getElementById('bodyInput').value = '';
                 await cargarPosts();
-                alert(`✅ Post "${nuevoPost.title}" creado con ID ${nuevoPost.id}`);
-
+                alert('✅ Post creado exitosamente');
             } catch (error) {
-                console.error('Error al crear post:', error);
                 alert(`❌ Error al crear el post: ${error.message}`);
             }
         }
 
-        // --- FUNCIÓN PARA ELIMINAR UN POST ---
         async function eliminarPost(id) {
-            if (!confirm(`¿Seguro que quieres eliminar el post #${id}?`)) {
-                return;
-            }
-
+            if (!confirm(`¿Seguro que quieres eliminar el post #${id}?`)) return;
             try {
                 const response = await fetch(`${API_URL}/posts/${id}`, {
                     method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` },
                 });
-
                 if (!response.ok) {
-                    throw new Error(`Error ${response.status}: ${response.statusText}`);
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Error al eliminar el post');
                 }
-
                 await cargarPosts();
                 alert(`✅ Post #${id} eliminado correctamente`);
-
             } catch (error) {
-                console.error('Error al eliminar post:', error);
                 alert(`❌ Error al eliminar el post: ${error.message}`);
             }
         }
 
-        // --- FUNCIÓN PARA MOSTRAR EL FORMULARIO DE EDICIÓN ---
-        function mostrarEditar(id) {
-            const editForm = document.getElementById(`edit-${id}`);
-            if (editForm) {
-                editForm.classList.toggle('active');
-            }
-        }
-
-        // --- FUNCIÓN PARA GUARDAR EDICIÓN ---
-        async function guardarEdicion(id) {
-            const title = document.getElementById(`edit-title-${id}`).value.trim();
-            const body = document.getElementById(`edit-body-${id}`).value.trim();
-
-            if (!title || !body) {
-                alert('❌ El título y el contenido no pueden estar vacíos.');
-                return;
-            }
-
-            try {
-                const response = await fetch(`${API_URL}/posts/${id}`, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ title, body, userId: 1 }),
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Error ${response.status}: ${response.statusText}`);
-                }
-
-                await cargarPosts();
-                alert(`✅ Post #${id} actualizado correctamente`);
-
-            } catch (error) {
-                console.error('Error al actualizar post:', error);
-                alert(`❌ Error al actualizar el post: ${error.message}`);
-            }
-        }
-
-        // --- FUNCIÓN PARA CANCELAR EDICIÓN ---
-        function cancelarEdicion(id) {
-            const editForm = document.getElementById(`edit-${id}`);
-            if (editForm) {
-                editForm.classList.remove('active');
-            }
-        }
-
-        // --- UTILIDAD: Escapar HTML ---
         function escapeHtml(text) {
-            const div = document.createElement('div');
+            if (!text) return '';
+            const div = document.createElement('div');   "Corregir autenticación en el frontend"
             div.textContent = text;
             return div.innerHTML;
         }
-
-        // --- CARGAR POSTS AL INICIAR ---
-        cargarPosts();
     </script>
-
 </body>
-</html> 
+</html>
